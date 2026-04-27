@@ -11,8 +11,10 @@ const nested={
     arr,
     obj
 }
+Object.freeze(nested)
+Object.freeze(obj)
 
-console.log(escapeStr)
+// console.log(escapeStr)
 // console.log(arr)
 // console.log(obj)
 // console.log(nested)
