@@ -3,7 +3,7 @@ is.num= function(n){
     return typeof n == "number"
 }
 is.nan= function(n){
-    return typeof n != "number"
+    return Number.isNaN(n)
 }
 
 is.str= function(str){
@@ -41,3 +41,5 @@ is.truthy= function(valuse){
 is.falsy= function(valuse){
     return !valuse
 }
+
+// console.log(is.nan('_'));
