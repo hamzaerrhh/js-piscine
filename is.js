@@ -23,8 +23,10 @@ is.arr= function(arr){
     return Array.isArray(arr)
 
 }
-is.obj = function(obj){
-    return typeof obj == "object"
+is.obj = function (obj) {
+    return obj !== null &&
+           typeof obj === "object" &&
+           !Array.isArray(obj);
 }
 
 const testFunc =function(){
@@ -42,4 +44,4 @@ is.falsy= function(valuse){
     return !valuse
 }
 
-// console.log(is.nan('_'));
+// console.log(is.obj('_'));
