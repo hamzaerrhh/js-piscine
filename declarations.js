@@ -8,8 +8,13 @@ const obj={
 
 }
 const nested={
-    arr,
-    obj
+    arr:[4,undefined,'2'],
+    obj:{
+         str :"1",
+ num : 14,
+ bool :true,
+        
+    }
 }
 Object.freeze(nested)
 Object.freeze(obj)
