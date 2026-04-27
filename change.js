@@ -9,13 +9,13 @@ function get(key){
 return sourceObject[key]
 }
 function set(key,value){
-    sourceObject[key] = value
+ return   sourceObject[key] = value
 }
 
 //  console.log(get("str"));
 //   console.log(get("c"));
-//    console.log(set("str","lolo"));
+   console.log(set("num",55));
 
 
 
-// console.log(sourceObject);
+console.log(sourceObject);
