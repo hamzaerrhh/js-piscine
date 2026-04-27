@@ -1,11 +1,11 @@
  function more(arg) {
 n= parseFloat(arg)
-return n++
+return ++n
 
 }
 function less(arg){
 n= parseFloat(arg)
-return n--
+return --n
 }
 function add(arg1,arg2){
     n1= parseFloat(arg1)
