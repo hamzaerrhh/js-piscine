@@ -1,4 +1,4 @@
-const is ={}
+// const is ={}
 is.num= function(n){
     return typeof n == "number"
 }
