@@ -1,16 +1,13 @@
 function isPositive(n){
     n = parseFloat(n)
-    if (n >0){
-        return true
-    }
+    return n>0 ? true :false
+   
 }
 
 function abs(n){
     n = parseFloat(n)
-    if (n >=0){
-        return n
-    }
-    return -n
+
+return n >= 0 ? n : -n;
 
 }
-// console.log(abs(0));
+console.log(abs(0),isPositive(0));
