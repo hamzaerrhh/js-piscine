@@ -11,15 +11,15 @@ const nested={
     arr:[4,undefined,'2'],
     obj:{
          str :"1",
- num : 14,
- bool :true,
+        num : 14,
+     bool :true,
         
     }
 }
 Object.freeze(nested)
 Object.freeze(nested.obj)
 Object.freeze(obj)
-
+Object.freeze(arr);
 // console.log(escapeStr)
 // console.log(arr)
 // console.log(obj)
