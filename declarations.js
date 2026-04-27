@@ -19,9 +19,8 @@ const nested={
 Object.freeze(nested)
 Object.freeze(nested.obj)
 Object.freeze(obj)
-nested.obj.str="5555"
 
 // console.log(escapeStr)
 // console.log(arr)
 // console.log(obj)
-console.log(nested)
+// console.log(nested)
