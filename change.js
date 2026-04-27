@@ -14,8 +14,8 @@ function set(key,value){
 
 //  console.log(get("str"));
 //   console.log(get("c"));
-   console.log(set("num",55));
+//    console.log(set("num",55));
 
 
 
-console.log(sourceObject);
+// console.log(sourceObject);
