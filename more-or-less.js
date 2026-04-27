@@ -1,26 +1,22 @@
  const more =function(arg) {
-    n = parseInt(arg)
-    n=n+1
-    return n
+  const  n = parseFloat(arg)
+    return n+1
 }
 
 const less =function (arg){
-    n= parseInt(arg)
-    n=n-1
-    return n
+  const   n= parseFloat(arg)
+    return n-1
 }
 
 const add = function (arg1,arg2){
-    n1= parseInt(arg1)
-    n2= parseInt(arg2)
-  const  sol=n1+n2
-    return sol
+ const   n1= parseFloat(arg1)
+   const n2= parseFloat(arg2)
+    return n1+n2
 }
 
 const sub =function (arg1,arg2){
-    n1= parseInt(arg1)
-    n2= parseInt(arg2)
-    const sol=n1-n2
-    return sol
+    const n1= parseFloat(arg1)
+    const n2= parseFloat(arg2)
+    return n1-n2
 }
-console.log(more(5),typeof more(5));
+// console.log(more(5),typeof more(5));
