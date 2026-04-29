@@ -8,25 +8,25 @@ const join = (arr, sep = ",") => {
   }
   return sol;
 };
-const split = (arr, sep) => {
-  var sol = new Array();
-  if (sep == undefined) {
-    sol.push(arr);
-  } else {
-    let elem = "";
-    const lenSep = sep.length;
+const split = (str, sep) => {
+  if (sep === undefined) return [str];
 
-    for (let i = 0; i < arr.length; i++) {
-      if (arr.slice(i, i + lenSep) == sep) {
-        sol.push(elem);
-        elem = "";
-        i = i + lenSep - 1;
-      } else {
-        elem += arr[i];
-      }
+  if (sep === "") return str.split(""); 
+
+  let sol = [];
+  let elem = "";
+  const lenSep = sep.length;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str.slice(i, i + lenSep) === sep) {
+      sol.push(elem);
+      elem = "";
+      i += lenSep - 1;
+    } else {
+      elem += str[i];
     }
-    sol.push(elem);
   }
 
+  sol.push(elem);
   return sol;
 };
