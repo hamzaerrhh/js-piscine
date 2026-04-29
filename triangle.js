@@ -6,10 +6,10 @@ const triangle = (str, nbr) => {
     for (let len = 0; len < i; len++) {
       sol += str;
     }
-    if (i != nbr) {
+    if (i != nbr && i != 0) {
       sol += "\n";
     }
   }
-  return "\n" + sol;
+  return sol;
 };
 console.log(triangle("#", 4));
