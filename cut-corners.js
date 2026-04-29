@@ -28,6 +28,7 @@ const floor = (num) => {
   }
 };
 const trunc = (num) => {
+  let sol;
   if (num < 0) {
     return (sol = -getInt(-num));
   } else {
