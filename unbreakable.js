@@ -18,9 +18,8 @@ const split = (arr, sep) => {
 
     for (let i = 0; i < arr.length; i++) {
       if (arr.slice(i, i + lenSep) == sep) {
-        if (elem != "") {
-          sol.push(elem);
-        }
+        sol.push(elem);
+
         elem = "";
         i = i + lenSep - 1;
       } else {
@@ -37,5 +36,5 @@ const split = (arr, sep) => {
 // console.log(join(elements, " "));
 // //spplit
 // const str = "The   quick   brown   fox   jumps   over   the   lazy dog.";
-// console.log(split("a b c", " "));
+console.log(split("rrrr", "rr"));
 // console.log(split(str, "   "));
