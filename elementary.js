@@ -4,6 +4,7 @@
        if((a>0 && b<0) || (a<0 && b>0)){
         sign=-1
        }
+
        if(a==0 || b==0){
         return 0
        }
@@ -12,7 +13,8 @@
      result +=a
     b--
    }
-return -result
+  return  sign==1 ? result: -result
+
  }
   const divide =(a,b)=>{
     if (a==b) {return 1}
@@ -32,7 +34,7 @@ return a-multy
  
 
 
- console.log(multiply(123,-22));
+ console.log(multiply(34,78));
 //   console.log(divide(8,3));
 //     console.log(modulo(8,3));
 
