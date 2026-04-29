@@ -1,7 +1,7 @@
 
 const slice =(str,indx,optIndx)=>{
-    start=normalizeIndex(str,indx)
-    end = normalizeIndex(str,optIndx,true)
+   const start=normalizeIndex(str,indx)
+   const  end = normalizeIndex(str,optIndx,true)
      let isArray =Array.isArray(str)
      let result
      isArray ? result=[] :result=""
@@ -41,9 +41,9 @@ const normalizeIndex = (arr, index, fromEnd = false) => {
     return index;
 };
 
-const animals = ["ant", "bison", "camel", "duck", "elephant"];
+// const animals = ["ant", "bison", "camel", "duck", "elephant"];
 
-console.log(slice(animals,2));
+// console.log(slice(animals,2));
 // // Expected output: Array ["camel", "duck", "elephant"]
 
 // console.log(slice(animals,2, 4));
@@ -61,4 +61,4 @@ console.log(slice(animals,2));
 // console.log(slice(animals,));
 // // Expected output: Array ["ant", "bison", "camel", "duck", "elephant"]
 //-----------------test cases----------------//
-console.log(slice('abcdef', 2))// === 'cdef'
+// console.log(slice('abcdef', 2))// === 'cdef'
