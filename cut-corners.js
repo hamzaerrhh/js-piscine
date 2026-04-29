@@ -37,7 +37,6 @@ const trunc = (num)=>{
     }
 }
 
-
 const ceil = (num)=>{
     isNeg=false
     if(num<0){
@@ -54,9 +53,6 @@ const ceil = (num)=>{
            return getInt(num+1)
     }
 }
-
-
-
 
 const getInt = (x) => {
 
