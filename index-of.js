@@ -39,9 +39,10 @@ const normalizeIndex = (len, index, fromEnd = false) => {
         index = len + index;
     }
 
+
     if (fromEnd) {
         if (index >= len) return len - 1;
-        if (index < 0) return -1;
+        if (index < 0) return len-1;
         return index;
     }
 
