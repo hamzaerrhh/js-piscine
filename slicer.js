@@ -1,46 +1,24 @@
+const slice = (data, start = 0, end = data.length) => {
+    const len = data.length;
 
-const slice =(str,indx,optIndx)=>{
+    if (start < 0) start = len + start;
+    if (end < 0) end = len + end;
 
-   const start=normalizeIndex(str,indx)
-   const  end = normalizeIndex(str,optIndx,true)
-     let isArray =Array.isArray(str)
-    //  console.log("s",start,end)
-     let result
-     isArray ? result=[] :result=""
+    if (start < 0) start = 0;
+    if (end > len) end = len;
 
-      for (let i = start; i <= end ; i++) {
-        if(isArray){
-              result.push(str[i])
-        }else{
-               result += str[i];
+    // result type depends on input
+    let result = Array.isArray(data) ? [] : "";
 
+    for (let i = start; i < end; i++) {
+        if (Array.isArray(data)) {
+            result.push(data[i]);
+        } else {
+            result += data[i];
         }
     }
 
-    return result
-    
-}
-const normalizeIndex = (arr, index, fromEnd = false) => {
-    const len= arr.length
-    
-    if (index === undefined) {
-        return fromEnd ? len - 1 : 0;
-    }
-
-    if (index < 0) {
-        index = len + index;
-    }
-
-
-    if (fromEnd) {
-        if (index >= len || index <0 ) return len - 1;
-        return index;
-    }
-
-    if (index < 0) return 0;
-    if (index > len) return len;
-
-    return index;
+    return result;
 };
 
 // const animals = ["ant", "bison", "camel", "duck", "elephant"];
@@ -64,5 +42,5 @@ const normalizeIndex = (arr, index, fromEnd = false) => {
 // // Expected output: Array ["ant", "bison", "camel", "duck", "elephant"]
 //-----------------test cases----------------//
 // console.log(slice('abcdef', 2))// === 'cdef'
-// console.log(slice('abcdef', 0, 2))// === 'ab'
+console.log(slice('abcdef', 0, 2))// === 'ab'
 console.log(slice('abcdef', 2)) //=== 'cdef'
