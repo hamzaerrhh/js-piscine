@@ -77,11 +77,3 @@ console.log("step",step,n);
 
     return n;
 };
-
-// console.log("int",getInt(315.9))
-// const nums = [3.7, -3.7, 3.1, -30.1]
-// console.log(nums.map(round))
-// console.log(nums.map(floor))
-// console.log(nums.map(trunc))
-// console.log(nums.map(ceil))
-// console.log(getInt(-9.6))
