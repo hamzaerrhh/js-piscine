@@ -65,7 +65,6 @@ const getInt = (x) => {
         step *= 10;
     }
 
-console.log("step",step,n);
 
 
     while (step >= 1) {
