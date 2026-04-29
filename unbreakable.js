@@ -22,6 +22,7 @@ const split = (arr, sep) => {
           sol.push(elem);
         }
         elem = "";
+        i = i + lenSep - 1;
       } else {
         elem += arr[i];
       }
