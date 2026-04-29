@@ -9,7 +9,7 @@ return -1
 }
 const lastIndexOf=(arr,value)=>{
 
-    for (let i=arr.length -1;i>0;i--){
+    for (let i=arr.length -1;i>=0;i--){
         if(value==arr[i]){
             return i
         }
@@ -26,7 +26,8 @@ return false
 
 
 }
-
+//test cases
+console.log(indexOf(['t', 0, 0, 't'], 't', 1))
 // const arr = ['1',8,9,4,3,2,51]
 // console.log(indexOf(arr,4));
 
