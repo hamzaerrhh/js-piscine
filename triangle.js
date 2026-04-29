@@ -13,3 +13,4 @@ const triangle = (str, nbr) => {
   return sol;
 };
 console.log(triangle("#", 4));
+
