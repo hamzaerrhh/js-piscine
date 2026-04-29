@@ -44,4 +44,4 @@ const split = (arr, sep) => {
 // //spplit
 // const str = "The   quick   brown   fox   jumps   over   the   lazy dog.";
 console.log(split("rrrr", "rr"));
-console.log(split("Riad", ""));
+console.log(split("", "Riad"));
