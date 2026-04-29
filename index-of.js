@@ -1,43 +1,52 @@
-const indexOf=(arr,value)=>{
-    for (let i=0;i<arr.length;i++){
-        if(value==arr[i]){
-            return i
+const indexOf = (arr, value, index = 0) => {
+    index = normalizeIndex(arr, index);
+
+    for (let i = index; i < arr.length; i++) {
+        if (value === arr[i]) {
+            return i;
         }
     }
-return -1
+    return -1;
+};
+const lastIndexOf = (arr, value, index = arr.length - 1) => {
+    index = normalizeIndex(arr, index, true);
 
-}
-const lastIndexOf=(arr,value)=>{
-
-    for (let i=arr.length -1;i>=0;i--){
-        if(value==arr[i]){
-            return i
+    for (let i = index; i >= 0; i--) {
+        if (value === arr[i]) {
+            return i;
         }
     }
-return -1
-}
-const includes=(arr,value)=>{
-        for (let i=0;i<arr.length;i++){
-        if(value==arr[i]){
-            return true
+    return -1;
+};
+const includes = (arr, value, index = 0) => {
+    index = normalizeIndex(arr, index);
+
+    for (let i = index; i < arr.length; i++) {
+        if (value === arr[i]) {
+            return true;
         }
     }
-return false
+    return false;
+};
 
 
-}
-//test cases
-console.log(indexOf(['t', 0, 0, 't'], 't', 1))
-// const arr = ['1',8,9,4,3,2,51]
-// console.log(indexOf(arr,4));
+const normalizeIndex = (len, index, fromEnd = false) => {
+    if (index === undefined) {
+        return fromEnd ? len - 1 : 0;
+    }
 
-// const animals = ["Dodo", "Tiger", "Penguin", "Dodo"];
+    if (index < 0) {
+        index = len + index;
+    }
 
-// console.log(lastIndexOf(animals,"Dodo"));
-// //inclused
-// const pets = ["cat", "dog", "bat"];
+    if (fromEnd) {
+        if (index >= len) return len - 1;
+        if (index < 0) return -1;
+        return index;
+    }
 
-// console.log(includes(pets,"cat"));
-// // Expected output: true
+    if (index < 0) return 0;
+    if (index > len) return len;
 
-// console.log(includes(pets,"at"));
+    return index;
+};
