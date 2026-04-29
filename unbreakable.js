@@ -39,4 +39,3 @@ const split = (arr, sep) => {
 // //spplit
 // const str = "The quick brown fox jumps over the lazy dog.";
 // console.log(split("a b c", " "));
-i is not 
