@@ -1,6 +1,6 @@
 const nasa = (n) => {
   sol = "";
-  for (let i = 1; i < n; i++) {
+  for (let i = 1; i <= n; i++) {
     if (i % 3 == 0) {
       sol += "NA";
     }
@@ -11,11 +11,11 @@ const nasa = (n) => {
       sol += i;
     }
 
-    if (i != n - 1) {
+    if (i != n) {
       sol += " ";
     }
   }
   return sol;
 };
 
-// console.log(nasa(16));
+console.log(nasa(15));
