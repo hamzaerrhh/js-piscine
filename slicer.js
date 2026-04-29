@@ -1,12 +1,14 @@
 
 const slice =(str,indx,optIndx)=>{
+
    const start=normalizeIndex(str,indx)
    const  end = normalizeIndex(str,optIndx,true)
      let isArray =Array.isArray(str)
+    //  console.log("s",start,end)
      let result
      isArray ? result=[] :result=""
 
-      for (let i = start; i < end ; i++) {
+      for (let i = start; i <= end ; i++) {
         if(isArray){
               result.push(str[i])
         }else{
@@ -63,3 +65,4 @@ const normalizeIndex = (arr, index, fromEnd = false) => {
 //-----------------test cases----------------//
 // console.log(slice('abcdef', 2))// === 'cdef'
 // console.log(slice('abcdef', 0, 2))// === 'ab'
+console.log(slice('abcdef', 2)) //=== 'cdef'
