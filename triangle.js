@@ -10,6 +10,6 @@ const triangle = (str, nbr) => {
       sol += "\n";
     }
   }
-  return sol;
+  return "\n" + sol;
 };
-// console.log(triangle("*", 5));
+console.log(triangle("#", 4));
