@@ -1,8 +1,10 @@
  const multiply =(a,b)=>{
        let result=0
        let sign=1
+
        if((a>0 && b<0) || (a<0 && b>0)){
         sign=-1
+        a<0 ? a=-a : b=-b
        }
 
        if(a==0 || b==0){
@@ -34,7 +36,9 @@ return a-multy
  
 
 
- console.log(multiply(34,78));
+ console.log(multiply(34,78)); //2682
+  console.log(multiply(123,-22)); //-2706
+
 //   console.log(divide(8,3));
 //     console.log(modulo(8,3));
 
