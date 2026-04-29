@@ -16,7 +16,7 @@ const split = (arr, sep) => {
     let elem = "";
     const lenSep = sep.length;
 
-    for (let i = 0; i <= arr.length - lenSep; i++) {
+    for (let i = 0; i < arr.length; i++) {
       if (arr.slice(i, i + lenSep) == sep) {
         if (elem != "") {
           sol.push(elem);
@@ -26,9 +26,7 @@ const split = (arr, sep) => {
         elem += arr[i];
       }
     }
-    if (elem != "") {
-      sol.push(elem);
-    }
+    sol.push(elem);
   }
 
   return sol;
@@ -37,5 +35,6 @@ const split = (arr, sep) => {
 // const elements = ["Fire", "Air", "Water"];
 // console.log(join(elements, " "));
 // //spplit
-// const str = "The quick brown fox jumps over the lazy dog.";
+// const str = "The   quick   brown   fox   jumps   over   the   lazy dog.";
 // console.log(split("a b c", " "));
+// console.log(split(str, "   "));
