@@ -1,6 +1,6 @@
 const join = (arr, sep = ",") => {
   let sol = "";
-  for (i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     sol += arr[i];
     if (i != arr.length - 1) {
       sol += sep;
@@ -16,7 +16,7 @@ const split = (arr, sep) => {
     let elem = "";
     const lenSep = sep.length;
 
-    for (i = 0; i <= arr.length - lenSep; i++) {
+    for (let i = 0; i <= arr.length - lenSep; i++) {
       if (arr.slice(i, i + lenSep) == sep) {
         if (elem != "") {
           sol.push(elem);
@@ -39,3 +39,4 @@ const split = (arr, sep) => {
 // //spplit
 // const str = "The quick brown fox jumps over the lazy dog.";
 // console.log(split("a b c", " "));
+i is not 
