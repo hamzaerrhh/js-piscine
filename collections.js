@@ -13,64 +13,34 @@ map.set(3, 'c')
 map.set(4, 'd')
 
 function arrToSet(arr){
-    let set =new Set()
-    for (let value of arr){
-set.add(value)
-    }
-return set
+
+    return new Set(arr)
+
 }
+
 function arrToStr(arr){
    return arr.join('')
 }
 function setToArr(set){
-    let arr = new Array()
-    for (let value of set){
-        arr.push(value)
-    }
-    return arr
+    return Array.from(set)
 }
 function setToStr(set){
-    let s =""
-    for (let value of set){
-        s+=String(value)
-    }
-    return s
-
+    return new Set(str)
 }
 function strToArr(str){
-    let arr = new Array()
-
-      for (let value of str){
-        arr.push(value)
-    }
-    return arr
+    return str.split("")
 }
 function strToSet(str){
-      let set = new Set()
-
-      for (let value of str){
-        set.add(value)
-    }
-    return set
+    return new Set(str.split(""))
 
 }
 
 function mapToObj(map) {
-    let obj = {};
-
-    for (let [key, value] of map) {
-        obj[key] = value;
-    }
-
-    return obj;
+    return Object.fromEntries(map)
 }
 
+////////////////////////
 function objToArr(obj){
-        let arr = new Array();
-
-    for (let value of Object.values(obj)) {
-        arr.push(value)
-    }
     return arr;
 }
 
@@ -99,14 +69,14 @@ function strToObj(str){
     }
     return obj;
 }
-// console.log(arrToSet(arr)) // -> Set { 1, 2, 3 }
-// console.log(arrToStr(arr)) // -> '1213'
-// console.log(setToArr(set)) // -> [1, 2, 3]
-// console.log(setToStr(set)) // -> '123'
-// console.log(strToArr(str)) // -> ['h', 'e', 'l', 'l', 'o']
-// console.log(strToSet(str)) // -> Set { 'h', 'e', 'l', 'o' }
+console.log(arrToSet(arr)) // -> Set { 1, 2, 3 }
+console.log(arrToStr(arr)) // -> '1213'
+console.log(setToArr(set)) // -> [1, 2, 3]
+console.log(setToStr(set)) // -> '123'
+console.log(strToArr(str)) // -> ['h', 'e', 'l', 'l', 'o']
+console.log(strToSet(str)) // -> Set { 'h', 'e', 'l', 'o' }
 
-// console.log(mapToObj(map)) // -> { a: 1, b: 2, '3': 'c', '4': 'd' }
+console.log(mapToObj(map)) // -> { a: 1, b: 2, '3': 'c', '4': 'd' }
 // console.log(objToArr(obj)) // -> [45, 75, 24]
 // console.log(objToMap(obj)) // -> Map { 'x' => 45, 'y' => 75, 'radius' => 24 }
 // console.log(arrToObj(arr)) // -> { '0': 1, '1': 2, '2': 1, '3': 3 }
