@@ -7,15 +7,11 @@ const slice = (data, start = 0, end = data.length) => {
     if (start < 0) start = 0;
     if (end > len) end = len;
 
-    // result type depends on input
     let result = Array.isArray(data) ? [] : "";
+    const isArr =Array.isArray(data)
 
     for (let i = start; i < end; i++) {
-        if (Array.isArray(data)) {
-            result.push(data[i]);
-        } else {
-            result += data[i];
-        }
+        isArr ? result.push(data[i]): result += data[i];
     }
 
     return result;
