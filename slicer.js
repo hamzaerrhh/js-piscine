@@ -6,7 +6,7 @@ const slice =(str,indx,optIndx)=>{
      let result
      isArray ? result=[] :result=""
 
-      for (let i = start; i < end || i < str.length; i++) {
+      for (let i = start; i < end ; i++) {
         if(isArray){
               result.push(str[i])
         }else{
@@ -43,7 +43,7 @@ const normalizeIndex = (arr, index, fromEnd = false) => {
 
 // const animals = ["ant", "bison", "camel", "duck", "elephant"];
 
-// console.log(slice(animals,2));
+// console.log(slice(animals,0,2));
 // // Expected output: Array ["camel", "duck", "elephant"]
 
 // console.log(slice(animals,2, 4));
@@ -62,3 +62,4 @@ const normalizeIndex = (arr, index, fromEnd = false) => {
 // // Expected output: Array ["ant", "bison", "camel", "duck", "elephant"]
 //-----------------test cases----------------//
 // console.log(slice('abcdef', 2))// === 'cdef'
+// console.log(slice('abcdef', 0, 2))// === 'ab'
