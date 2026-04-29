@@ -29,7 +29,6 @@ const includes = (arr, value, index = 0) => {
     return false;
 };
 
-
 const normalizeIndex = (len, index, fromEnd = false) => {
     if (index === undefined) {
         return fromEnd ? len - 1 : 0;
