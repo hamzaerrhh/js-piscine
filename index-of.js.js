@@ -25,7 +25,7 @@ const includes=(arr,value)=>{
 return false
 
 
-// }
+}
 
 // const arr = ['1',8,9,4,3,2,51]
 // console.log(indexOf(arr,4));
