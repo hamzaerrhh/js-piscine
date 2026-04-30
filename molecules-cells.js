@@ -16,7 +16,7 @@ const RNA = (str) => {
         sol += "U";
         break;
       default:
-        sol += ""; // or handle invalid input
+        sol += "";
     }
   }
 

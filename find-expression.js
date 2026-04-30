@@ -1,10 +1,10 @@
-// const mul2 = "*2";
-// const add4 = "+4";
+const mul2 = "*2";
+const add4 = "+4";
 
 const findExpression = (n) => {
   if (n < 1) return undefined;
   if (n === 1) return undefined;
-  if (n % 2 !== 0) return undefined; // assuming only even numbers are allowed
+  // if (n % 2 !== 0) return undefined;
 
   let sol = "1";
   let exp = 1;
