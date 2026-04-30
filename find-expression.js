@@ -1,7 +1,7 @@
 const findExpression = (n) => {
   let sol = "1";
   if (n % 2 != 0) {
-    return 0;
+    return;
   }
   let exp = 1;
 
@@ -13,5 +13,5 @@ const findExpression = (n) => {
     sol += " " + mul2;
     exp *= 2;
   }
-  return -1;
+  return;
 };
