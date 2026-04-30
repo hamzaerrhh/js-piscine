@@ -15,5 +15,3 @@ const pyramid = (str, depth) => {
 
   return result;
 };
-
-// console.log(pyramid("ab", 5));
