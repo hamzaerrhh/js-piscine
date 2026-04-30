@@ -14,5 +14,9 @@ function flat(arr, depth = 1) {
   return result;
 }
 
-const arr1 = [1, 2, [3, 4], [4, [5, 1, 2, [5, 5]]]];
-console.log(flat(arr1));
+// const arr1 = [1, 2, [3, 4], [4, [5, 1, 2, [5, 5]]]];
+// console.log(flat(arr1, 4));
+
+const test = [1, 2, 6];
+console.log(test);
+console.log(...test);
