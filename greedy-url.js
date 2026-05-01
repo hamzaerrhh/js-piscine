@@ -1,6 +1,6 @@
 const urlReg = /https?:\/\/[^\s]+/g;
 
-const countParams = (url) => (url.match(/[?&][\w-]+=[^&\s]+/g) || []).length;
+const countParams = (url) => (url.match(/[?&][\w]+=[^&\s]+/gi) || []).length;
 
 const getURL = (str) => {
   return str.match(urlReg);
