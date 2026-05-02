@@ -1,5 +1,45 @@
 const regPorts = /(\d+)\.(\d+)\.(\d+)\.(\d+)(?::(\d+))?/g;
 const regPort = /(\d+)\.(\d+)\.(\d+)\.(\d+)(?::(\d+))?/;
+
+const validX = (n) => {
+  const reg = /^0\d+/;
+  const valid = reg.test(n) ? undefined : parseInt(n);
+  console.log("the test is ", n, valid);
+
+  return valid;
+};
+
+const checkValidation = (x1, x2, x3, x4, port) => {
+  console.log("start validation", x1, x2, x3, x4, port);
+  if (
+    x1 == undefined ||
+    x2 == undefined ||
+    x3 == undefined ||
+    x4 == undefined
+  ) {
+    return false;
+  }
+  if (
+    x1 < 0 ||
+    x1 > 255 ||
+    x2 < 0 ||
+    x2 > 255 ||
+    x3 < 0 ||
+    x3 > 255 ||
+    x4 < 0 ||
+    x4 > 255
+  ) {
+    return false;
+  }
+  if (port) {
+    if (port > 65535) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
 const findIP = (str) => {
   const matches = str.match(regPorts);
   if (!matches) {
@@ -9,26 +49,12 @@ const findIP = (str) => {
   matches.map((add) => {
     let addres;
     const match = add.match(regPort);
-    const x1 = parseInt(match[1]);
-    const x2 = parseInt(match[2]);
-    const x3 = parseInt(match[3]);
-    const x4 = parseInt(match[4]);
-    console.log(match[5]);
-    const port = parseInt(match[5]);
-    if (
-      !(
-        x1 <= 0 ||
-        x1 >= 255 ||
-        x2 <= 0 ||
-        x2 >= 255 ||
-        x3 <= 0 ||
-        x3 >= 255 ||
-        x4 <= 0 ||
-        x4 >= 255 ||
-        port <= 0 ||
-        port >= 65535
-      )
-    ) {
+    const x1 = validX(match[1]);
+    const x2 = validX(match[2]);
+    const x3 = validX(match[3]);
+    const x4 = validX(match[4]);
+    const port = validX(match[5]);
+    if (checkValidation(x1, x2, x3, x4, port)) {
       sol.push(add);
     }
   });
@@ -46,3 +72,5 @@ const findIP = (str) => {
 // http://www.example.com/catalog.asp?itemid=232&template=fresh&crcat=ppc&crsource=google&crkw=buy-a-lot texting does not require the caller and recipient to both be free at the same moment0.0.0.0`;
 
 // console.log(findIP(dataSet));
+
+// console.log(validX("1"));
