@@ -11,11 +11,3 @@ return sourceObject[key]
 function set(key,value){
  return   sourceObject[key] = value
 }
-
-//  console.log(get("str"));
-//   console.log(get("c"));
-//    console.log(set("num",55));
-
-
-
-// console.log(sourceObject);

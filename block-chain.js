@@ -1,22 +1,20 @@
-const hashCode = (str) =>
-  (
-    [...str].reduce((h, c) => (h = (h << 5) - h + c.charCodeAt(0)) & h, 0) >>> 0
-  ).toString(36);
+// const hashCode = (str) =>
+//   (
+//     [...str].reduce((h, c) => (h = (h << 5) - h + c.charCodeAt(0)) & h, 0) >>> 0
+//   ).toString(36);
 
 const genesisBlock = { index: 0, hash: "0" };
 
 function blockChain(data, prev = genesisBlock) {
   const index = prev.index + 1;
-	
   const hash = hashCode(index + prev.hash + JSON.stringify(data));
-
   return {
     index,
     hash,
     data,
     prev,
-    chain(nextData) {
-      return blockChain(nextData, this);
+    chain(newData) {
+      return blockChain(newData, this);
     },
   };
 }

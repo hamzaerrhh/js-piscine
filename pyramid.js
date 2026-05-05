@@ -15,3 +15,4 @@ const pyramid = (str, depth) => {
 
   return result;
 };
+pyramid("**", 3);

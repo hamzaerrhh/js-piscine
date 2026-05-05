@@ -58,7 +58,6 @@ const ceil = (num) => {
 const getInt = (x) => {
   let n = 0;
   let step = 1;
-
   while (n + step * 10 <= x) {
     step *= 10;
   }
@@ -69,6 +68,6 @@ const getInt = (x) => {
     }
     step /= 10;
   }
-
+  
   return n;
 };

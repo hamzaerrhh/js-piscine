@@ -6,18 +6,15 @@ const orbitalPeriods = new Map([
   ["jupiter", 11.862615],
   ["saturn", 29.447498],
   ["uranus", 84.016846],
-  ["neptune", 164.79132]
+  ["neptune", 164.79132],
 ]);
-
 
 function dogYears(planet, seconds) {
   const earthYears = seconds / 31557600;
 
   const planetYears = earthYears / orbitalPeriods.get(planet);
+  const res = planetYears * 7;
 
-  const result = planetYears * 7;
-
-  return Number(result.toFixed(2));
+  return Number(res.toFixed(2));
 }
 
-// console.log(dogYears("earth",1000000000))

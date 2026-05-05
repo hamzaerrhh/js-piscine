@@ -1,7 +1,7 @@
 function addWeek(date) {
   const epoch = new Date("0001-01-01");
 
-  const msPerDay = 86400000;
+  const msPerDay = 24 * 60 * 60 * 1000;
 
   const days = Math.floor((date.getTime() - epoch.getTime()) / msPerDay);
 

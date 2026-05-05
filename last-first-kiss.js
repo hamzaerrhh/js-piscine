@@ -9,12 +9,3 @@ function last(arg){
 function kiss(arg){
     return [last(arg),first(arg)]
 }
-// const str = "lolopmaoaloo"
-// const videStr=""
-// const arr =[4,858,'ljk']
-// const arrVide=[]
-
-// console.log(kiss(str));
-// console.log(kiss(videStr));
-// console.log(kiss(arr));
-// console.log(kiss(arrVide));

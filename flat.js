@@ -1,22 +1,17 @@
 function flat(arr, depth = 1) {
   if (depth < 1) return arr;
 
-  const result = [];
+  const res = [];
 
-  for (const item of arr) {
-    if (Array.isArray(item)) {
-      result.push(...flat(item, depth - 1));
+  for (let a of arr) {
+    if (Array.isArray(a)) {
+      res.push(...flat(a, depth - 1));
     } else {
-      result.push(item);
+      res.push(a);
     }
   }
-
-  return result;
+  return res;
 }
 
-// const arr1 = [1, 2, [3, 4], [4, [5, 1, 2, [5, 5]]]];
-// console.log(flat(arr1, 4));
 
-const test = [1, 2, 6];
-console.log(test);
-console.log(...test);
+

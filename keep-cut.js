@@ -17,18 +17,12 @@ const keepFirst=(str)=>{
 const keepLast=(str)=>{
  return str.slice(-2)
 
-
 }
 const keepFirstLast=(str)=>{
     if (str.length <= 3) return str;
 
     return str.slice(0, 2) + str.slice(-2);}
 
-// console.log(cutFirst("hello world"))
-// console.log(cutLast("hello world"))
-// console.log(cutFirstLast("hello world"))
-// console.log(keepFirst("hello world"))
-// console.log(keepLast("hello world"))
 console.log(keepFirstLast("hello world"))
 //--------------------test cases--------------//
 console.log(keepFirstLast('af'))// === 'af'
