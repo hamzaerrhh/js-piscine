@@ -23,6 +23,7 @@ const UpperFirst=(str)=>{
       .map((w) => w.charAt(0).toUpperCase() + w.susing-filter.jslice(1).toLowerCase())
       .join(" ");
 }
+
 const upperCasingStates = (arr) => {
   return arr.map((str) =>  UpperFirst(str))
 
