@@ -5,6 +5,8 @@ function firstDayWeek(week,year){
 
   let date=new Date(form)
   let days=date.getDay()
+
+  
   if (days==0){
     days+=7
   }
