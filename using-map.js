@@ -20,7 +20,7 @@ const UpperFirst=(str)=>{
 
     return str
       .split(" ")
-      .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .map((w) => w.charAt(0).toUpperCase() + w.susing-filter.jslice(1).toLowerCase())
       .join(" ");
 }
 const upperCasingStates = (arr) => {
