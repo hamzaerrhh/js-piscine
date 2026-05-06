@@ -25,6 +25,7 @@ t(() => isValid(new Date(1488370835081)))
 t(() => isValid(new Date('1995-12-17T03:24:00')))
 t(() => isValid(new Date('1995-12-17T03:24:00').getTime()))
 
+
 // isAfter
 t(() => !invalid(isAfter, 2))
 t(() => !isAfter(new Date('1992-01-01'), new Date('1992-01-02')))
