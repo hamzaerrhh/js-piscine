@@ -11,11 +11,24 @@ export const build = (n) => {
     console.log("kk")
     const brick = document.createElement('div');
 
+//     // Create <p>
+// const p = document.createElement('p');
+
+// // Add an id to the <p>
+// p.id = `text-${count}`;
+
+// // Optional text
+// p.textContent = `${count}`;
+
+// // Append <p> inside the div
+// brick.appendChild(p);
+
     brick.id = `brick-${count}`;
 
     if ((count - 1) % 3 === 1) {
       brick.setAttribute("foundation",true) 
     }
+    
 
     document.body.appendChild(brick);
 
