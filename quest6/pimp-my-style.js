@@ -18,7 +18,6 @@ export const pimp = () => {
   }
   else {
     index--;
-
     elem.classList.remove(styles[index]);
 
     if (index === 0) {
