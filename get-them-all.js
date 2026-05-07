@@ -4,8 +4,10 @@ export const  getArchitects=()=> {
 
   return [architects, nonArchitects];
 }
+
 export const getClassical = () => {
   const architects = Array.from(document.querySelectorAll("a"));
+
 
   const classical = architects.filter(el => el.classList.contains("classical"));
   const nonClassical = architects.filter(el => !el.classList.contains("classical"));
@@ -15,9 +17,8 @@ export const getClassical = () => {
 
 
 export const getActive = () => {
-  const classical = Array.from(document.querySelectorAll(".classical"));
+  const active = Array.from(document.querySelectorAll(".classical.active"));
 
-  const active = classical.filter(el => el.classList.contains("active"));
   const nonActive = classical.filter(el => !el.classList.contains("active"));
 
   return [active, nonActive];
