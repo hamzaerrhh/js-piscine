@@ -17,8 +17,9 @@ export const getClassical = () => {
 
 
 export const getActive = () => {
-  const active = Array.from(document.querySelectorAll(".classical.active"));
+  const classical = Array.from(document.querySelectorAll(".classical"));
 
+  const active = classical.filter(el => el.classList.contains("active"));
   const nonActive = classical.filter(el => !el.classList.contains("active"));
 
   return [active, nonActive];
