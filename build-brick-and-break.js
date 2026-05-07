@@ -20,7 +20,7 @@ export const build = (n) => {
     document.body.appendChild(brick);
 
     count++;
-  });
+  },100);
 };
 
 export const repair=(...ids)=>{
