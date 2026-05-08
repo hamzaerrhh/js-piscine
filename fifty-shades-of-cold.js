@@ -1,6 +1,6 @@
 import { colors } from "./fifty-shades-of-cold.data.js";
 
-const generateClasses = () => {
+export const generateClasses = () => {
   const style = document.createElement("style");
 
   let css = "";
@@ -17,19 +17,22 @@ const generateClasses = () => {
 
   document.head.appendChild(style);
 };
-const generateColdShades=()=>{
+export const generateColdShades=()=>{
 
       for (let col of colors) {
-        const elem=document.createElement("div")
-        elem.classList.add(col)
-        elem.textContent=`${col}`
-          document.body.append(elem)
+         const elem=document.createElement("div")
+         elem.classList.add(col)
+         elem.textContent=`${col}`
+         document.body.appendChild(elem)
+      }
 
+}
+export const choseShade = (shade) => {
+  const divs = document.querySelectorAll('div');
+
+  for (let elem of divs) {
+    elem.className = '';
+
+    elem.classList.add(shade);
   }
-
-}
-const choseShade=()=>{
-    const divs=document.querySelectorAll('div')
-    
-
-}
+};
