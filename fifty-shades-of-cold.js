@@ -29,8 +29,8 @@ export const generateColdShades = () => {
   ];
 
   for (let col of colors) {
-    if (coldColors.includes(col) )  {//  (cold => col.includes(cold)))
-    console.log("geneeate the div",col)
+    if (coldColors.some(cold => col.includes(cold))) {
+  console.log("geneeate the div",col)
 
       const elem = document.createElement("div");
 
