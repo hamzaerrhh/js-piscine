@@ -16,11 +16,11 @@ export const createCircle = () => {
   });
 };
 export const moveCircle = () => {
-  document.addEventListener("mousemove", (event) => {
-    const circles = document.querySelectorAll(".circle");
-    if (!circles.length) return;
 
-    const lastCircle = circles[circles.length - 1];
+  document.addEventListener("mousemove", (event) => {
+    const lastCircle = document.querySelector(".circle:last-child"); 
+    if (!lastCircle) return;
+
     const box = document.querySelector(".box");
     if (!box) return;
 
@@ -70,7 +70,7 @@ export const setBox = () => {
   const box = document.createElement("div");
   box.classList.add("box");
 
-  document.body.appendChild(box);
+  document.body.append(box);
 
 
 };

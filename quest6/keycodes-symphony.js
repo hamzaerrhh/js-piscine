@@ -12,8 +12,7 @@ export const compose = () => {
     }
 
     if (event.key === "Escape") {
-        
-      document.querySelectorAll(".note").forEach(note => note.remove());
+      document.body.innerHTML = ''
       return;
     }
 
