@@ -5,13 +5,13 @@ const R = SIZE / 2;
 
 export const createCircle = () => {
   document.addEventListener("click", (e) => {
-    const circle = document.createElement("div");
-    circle.className = "circle";
-    circle.style.left = `${e.clientX - R}px`;
-    circle.style.top = `${e.clientY - R}px`;
-    circle.style.background = "white";
-    circle.dataset.trapped = "0";
-    document.body.appendChild(circle);
+    const c = document.createElement("div");
+    c.className = "circle";
+    c.style.left = `${e.clientX - R}px`;
+    c.style.top = `${e.clientY - R}px`;
+    c.style.background = "white";
+    c.dataset.trapped = "0";
+    document.body.appendChild(c);
   });
 };
 
@@ -20,10 +20,7 @@ export const moveCircle = () => {
     const list = document.querySelectorAll(".circle");
     if (!list.length || !boxDimt) return;
 
-    const circle = list[list.length - 1];
-
-    let x = e.clientX - R;
-    let y = e.clientY - R;
+    const c = list[list.length - 1];
 
     const b = {
       l: boxDimt.left + 1,
@@ -32,30 +29,37 @@ export const moveCircle = () => {
       b: boxDimt.bottom - 1,
     };
 
-    const inside =
-      x >= b.l &&
-      x + SIZE <= b.r &&
-      y >= b.t &&
-      y + SIZE <= b.b;
+    let x = e.clientX - R;
+    let y = e.clientY - R;
 
-    if (inside || circle.dataset.trapped === "1") {
-      circle.style.background = "var(--purple)";
-      circle.dataset.trapped = "1";
-    }
-
-    if (circle.dataset.trapped === "1") {
+    // 🔥 USE ACTUAL POSITION AFTER MOVE LOGIC
+    if (c.dataset.trapped === "1") {
       x = Math.max(b.l, Math.min(x, b.r - SIZE));
       y = Math.max(b.t, Math.min(y, b.b - SIZE));
     }
 
-    circle.style.left = `${x}px`;
-    circle.style.top = `${y}px`;
+    c.style.left = `${x}px`;
+    c.style.top = `${y}px`;
+
+    // read real updated position
+    const rect = c.getBoundingClientRect();
+
+    const inside =
+      rect.left >= b.l &&
+      rect.right <= b.r &&
+      rect.top >= b.t &&
+      rect.bottom <= b.b;
+
+    if (inside || c.dataset.trapped === "1") {
+      c.style.background = "var(--purple)";
+      c.dataset.trapped = "1";
+    }
   });
 };
 
 export const setBox = () => {
   const box = document.createElement("div");
-  box.classList.add("box") 
+  box.className = "box";
   document.body.appendChild(box);
 
   const update = () => (boxDimt = box.getBoundingClientRect());
