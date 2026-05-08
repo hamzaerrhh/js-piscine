@@ -61,15 +61,14 @@ export const setBox = () => {
   box.classList.add("box");
 
   document.body.appendChild(box);
-    boxDimt = box.getBoundingClientRect();
 
 
-  // const updateBoxDimt = () => {
+  const updateBoxDimt = () => {
         boxDimt = box.getBoundingClientRect();
 
-  // };
+  };
 
-  // updateBoxDimt();
-  // window.addEventListener("resize", updateBoxDimt);
+  updateBoxDimt();
+  window.addEventListener("resize", updateBoxDimt);
 
 };
