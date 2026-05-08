@@ -14,25 +14,40 @@ export const generateClasses = () => {
   }
 
   style.textContent = css;
-
   document.head.appendChild(style);
 };
-export const generateColdShades=()=>{
 
-      for (let col of colors) {
-         const elem=document.createElement("div")
-         elem.classList.add(col)
-         elem.textContent=`${col}`
-         document.body.appendChild(elem)
-      }
+export const generateColdShades = () => {
+  const coldColors = [
+    "aqua",
+    "blue",
+    "turquoise",
+    "green",
+    "cyan",
+    "navy",
+    "purple",
+  ];
 
-}
+  for (let col of colors) {
+    if (coldColors.includes(col) )  {//  (cold => col.includes(cold)))
+    console.log("geneeate the div",col)
+
+      const elem = document.createElement("div");
+
+      elem.classList.add(col);
+      elem.textContent = col;
+
+  
+      document.body.appendChild(elem);
+    }
+  }
+};
+
 export const choseShade = (shade) => {
-  const divs = document.querySelectorAll('div');
+  const divs = document.querySelectorAll("div");
 
   for (let elem of divs) {
-    elem.className = '';
-
+    elem.className = "";
     elem.classList.add(shade);
   }
 };
