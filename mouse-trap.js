@@ -25,16 +25,15 @@ export const createCircle = () => {
     let x = e.clientX - R;
     let y = e.clientY - R;
 
-    const b = boxDimt ? getBox() : null;
+    c.dataset.trapped = "0";
+    c.style.background = "white";
 
-    const inside = b && isInside(x, y, b);
-
-    if (inside) {
-      c.style.background = "var(--purple)";
-      c.dataset.trapped = "1";
-    } else {
-      c.dataset.trapped = "0";
-      c.style.background = "white";
+    if (boxDimt) {
+      const inside = isInside(x, y, getBox());
+      if (inside) {
+        c.dataset.trapped = "1";
+        c.style.background = "var(--purple)";
+      }
     }
 
     c.style.left = `${x}px`;
@@ -43,32 +42,30 @@ export const createCircle = () => {
     document.body.appendChild(c);
   });
 };
-export const moveCircle = () => {
-  document.addEventListener("mousemove", (e) => {
-    const list = document.querySelectorAll(".circle");
-    if (!list.length || !boxDimt) return;
 
-    const c = list[list.length - 1];
-
-    const b = getBox();
+export const createCircle = () => {
+  document.addEventListener("click", (e) => {
+    const c = document.createElement("div");
+    c.className = "circle";
 
     let x = e.clientX - R;
     let y = e.clientY - R;
 
-    const inside = isInside(x, y, b);
+    c.dataset.trapped = "0";
+    c.style.background = "white";
 
-    if (inside || c.dataset.trapped === "1") {
-      c.style.background = "var(--purple)";
-      c.dataset.trapped = "1";
-    }
-
-    if (c.dataset.trapped === "1") {
-      x = Math.max(b.l, Math.min(x, b.r - SIZE));
-      y = Math.max(b.t, Math.min(y, b.b - SIZE));
+    if (boxDimt) {
+      const inside = isInside(x, y, getBox());
+      if (inside) {
+        c.dataset.trapped = "1";
+        c.style.background = "var(--purple)";
+      }
     }
 
     c.style.left = `${x}px`;
     c.style.top = `${y}px`;
+
+    document.body.appendChild(c);
   });
 };
 
