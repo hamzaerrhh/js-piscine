@@ -1,76 +1,73 @@
-let lastCircle = null;
-let box = null;
+let boxRect = null;
 
-export function createCircle(e) {
-  const circle = document.createElement("div");
-  circle.classList.add("circle");
+export const createCircle = () => {
+  document.addEventListener("click", (event) => {
+    const circle = document.createElement("div");
+    circle.classList.add("circle");
 
-  circle.style.position = "absolute";
-  circle.style.width = "20px";
-  circle.style.height = "20px";
-  circle.style.borderRadius = "50%";
-  circle.style.background = "white";
+    circle.style.left = `${event.clientX - 25}px`;
+    circle.style.top = `${event.clientY - 25}px`;
+    circle.style.background = "white";
 
-  circle.style.left = (e.clientX - 10) + "px";
-  circle.style.top = (e.clientY - 10) + "px";
+    circle.dataset.trapped = "false";
+    document.body.appendChild(circle);
+  });
+};
 
-  document.body.appendChild(circle);
+export const moveCircle = () => {
 
-  lastCircle = circle;
-}
+  document.addEventListener("mousemove", (event) => {
 
-export function moveCircle(e) {
-  if (!lastCircle) return;
+    const circles = document.querySelectorAll(".circle");
 
-  const boxRect = box ? box.getBoundingClientRect() : null;
+    if (circles.length === 0 || !boxRect) return;
 
-  let x = e.clientX - 10;
-  let y = e.clientY - 10;
+    const lastCircle = circles[circles.length - 1];
 
-  // If box exists and circle is trapped, keep it inside
-  if (boxRect && lastCircle.dataset.trapped === "true") {
-    if (x < boxRect.left) x = boxRect.left;
-    if (y < boxRect.top) y = boxRect.top;
-    if (x > boxRect.right - 20) x = boxRect.right - 20;
-    if (y > boxRect.bottom - 20) y = boxRect.bottom - 20;
-  }
+    let x = event.clientX - 25;
+    let y = event.clientY - 25;
 
-  lastCircle.style.left = x + "px";
-  lastCircle.style.top = y + "px";
+    const circleRect = {
+      left: x,
+      top: y,
+      right: x + 50,
+      bottom: y + 50,
+    };
 
-  // check if fully inside box
-  if (boxRect) {
-    const circleRect = lastCircle.getBoundingClientRect();
-
-    const inside =
+    const isInsideBox =
       circleRect.left >= boxRect.left &&
       circleRect.right <= boxRect.right &&
       circleRect.top >= boxRect.top &&
       circleRect.bottom <= boxRect.bottom;
 
-    if (inside) {
+
+    if (isInsideBox) {
       lastCircle.style.background = "var(--purple)";
       lastCircle.dataset.trapped = "true";
     }
-  }
-}
 
-export function setBox() {
-  box = document.createElement("div");
+    if (lastCircle.dataset.trapped === "true") {
+      x = Math.max(boxRect.left, Math.min(x, boxRect.right - 50));
+      y = Math.max(boxRect.top, Math.min(y, boxRect.bottom - 50));
+    }
+
+    lastCircle.style.left = `${x}px`;
+    lastCircle.style.top = `${y}px`;
+  });
+};
+
+export const setBox = () => {
+  const box = document.createElement("div");
   box.classList.add("box");
 
-  box.style.position = "absolute";
-  box.style.width = "200px";
-  box.style.height = "200px";
-
-  box.style.left = "50%";
-  box.style.top = "50%";
-  box.style.transform = "translate(-50%, -50%)";
-
-  box.style.border = "2px solid black";
-
   document.body.appendChild(box);
-}
 
-addEventListener("click", createCircle);
-addEventListener("mousemove", moveCircle);
+
+  const updateBoxRect = () => {
+    boxRect = box.getBoundingClientRect();
+  };
+
+  updateBoxRect();
+  window.addEventListener("resize", updateBoxRect);
+
+};
