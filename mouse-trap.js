@@ -15,7 +15,6 @@ export const createCircle = () => {
     document.body.appendChild(circle);
   });
 };
-
 export const moveCircle = () => {
   document.addEventListener("mousemove", (event) => {
     const circles = document.querySelectorAll(".circle");
@@ -26,53 +25,45 @@ export const moveCircle = () => {
     if (!box) return;
 
     const size = 50;
+    const radius = size / 2;
 
     let x = event.clientX;
     let y = event.clientY;
 
     const boxBound = box.getBoundingClientRect();
 
-    // circle rectangle
-    let circleRect = {
-      left: x - size / 2,
-      right: x + size / 2,
-      top: y - size / 2,
-      bottom: y + size / 2
-    };
-
-    // check full inside
+    // detect full inside
     const isInside =
-      circleRect.left > boxBound.left &&
-      circleRect.right < boxBound.right &&
-      circleRect.top > boxBound.top &&
-      circleRect.bottom < boxBound.bottom;
+      x > boxBound.left + radius &&
+      x < boxBound.right - radius &&
+      y > boxBound.top + radius &&
+      y < boxBound.bottom - radius;
 
-    // once inside → trap it
     if (isInside) {
       lastCircle.dataset.trapped = "true";
       lastCircle.style.background = "var(--purple)";
     }
 
-    // if trapped → clamp movement inside box
     if (lastCircle.dataset.trapped === "true") {
-      const clampedX = Math.max(
-        boxBound.left + size / 2,
-        Math.min(x, boxBound.right - size / 2) - 1
+      const clampedX = Math.min(
+        Math.max(x, boxBound.left + radius),
+        boxBound.right - radius
       );
 
-      const clampedY = Math.max(
-        boxBound.top + size / 2,
-        Math.min(y, boxBound.bottom - size / 2) - 1
+      const clampedY = Math.min(
+        Math.max(y, boxBound.top + radius),
+        boxBound.bottom - radius
       );
 
-      lastCircle.style.left = `${clampedX - size / 2}px`;
-      lastCircle.style.top = `${clampedY - size / 2}px`;
+      lastCircle.style.left = `${clampedX - radius}px`;
+      lastCircle.style.top = `${clampedY - radius}px`;
 
       return;
     }
 
-    lastCircle.style.left = `${x - size / 2}px`;
-    lastCircle.style.top = `${y - size / 2}px`;
+    // normal movement
+    lastCircle.style.left = `${x - radius}px`;
+    lastCircle.style.top = `${y - radius}px`;
   });
 };
 export const setBox = () => {
