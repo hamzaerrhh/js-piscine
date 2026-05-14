@@ -11,6 +11,7 @@ function throttle(func, timer) {
   };
 }
 
+
 function opThrottle(func, timer, {leading=false,trailing=false}) {
   let timeout;
   return (...args) => {
@@ -24,7 +25,9 @@ function opThrottle(func, timer, {leading=false,trailing=false}) {
       if (leading) {
         func(...args);
       }
+
       timeout = setTimeout(() => {
+        clearTimeout()
         timeout = false;
         if (!leading) {
           func(...args);
