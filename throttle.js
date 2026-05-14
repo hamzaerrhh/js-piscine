@@ -19,18 +19,18 @@ function opThrottle(func, timer, option = {trailing:false,leading:false}) {
   let timeout;
   let trailing=option.trailing;
   let leading=option.leading;
-  return (...args) => {
 
+  return (...args) => {
     if (!trailing && !leading) {
       return;
     }
 
     if (!timeout) {
-
       if (leading) {
         func(...args);
       }
-      timeout = setTimeout(() => {
+      timeout = setTimeout(() =>
+         {
         timeout = false;
         if (!leading) {
           func(...args);
