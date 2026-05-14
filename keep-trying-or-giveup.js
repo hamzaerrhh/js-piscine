@@ -1,16 +1,30 @@
+
 const retry=(count,callback)=>{
-    let countRetry=0
-    return async (...args)=>{
+    return  async (...args)=>{
+            let countRetry=0
+
 while(countRetry<=count){
     try{
-        countRetry++
          return   await callback(...args)
 
     }catch(err){
         if(countRetry==count){
             throw err
         }
+                countRetry++
     }
 }
     }
 }
+const timeout = (delay, callback) => {
+  return async (...args) => {
+    return Promise.race([
+      callback(...args),
+      new Promise((_, reject) =>
+        setTimeout(() => {
+          reject(new Error("timeout"));
+        }, delay)
+      ),
+    ]);
+  };
+};
