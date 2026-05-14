@@ -1,38 +1,41 @@
-function throttle(func, timer) {
-  let flage = true;
+function throttle(func, wait) {
+  let ready = true;
+
   return (...args) => {
-    if (flage) {
-      func(...args);
-      flage = false;
-    }
+    if (!ready) return;
+
+    ready = false;
+    func(...args);
+
     setTimeout(() => {
-      flage = true;
-    }, timer);
+      ready = true;
+    }, wait);
   };
 }
 
+function opThrottle(func, wait, { leading = false, trailing = false } = {}) {
+  let timeout = null;
+  let lastArgs = null;
 
-function opThrottle(func, timer, {leading=false,trailing=false}) {
-  let timeout;
   return (...args) => {
+    lastArgs = args;
 
-    if (!trailing && !leading) {
-      return;
+    const callNow = leading && !timeout;
+
+    if (callNow) {
+      func(...args);
     }
 
     if (!timeout) {
-
-      if (leading) {
-        func(...args);
-      }
-
       timeout = setTimeout(() => {
-        clearTimeout()
-        timeout = false;
-        if (!leading) {
-          func(...args);
+        timeout = null;
+
+        if (trailing && (!leading || lastArgs)) {
+          func(...lastArgs);
         }
-      }, timer);
+
+        lastArgs = null;
+      }, wait);
     }
   };
 }
