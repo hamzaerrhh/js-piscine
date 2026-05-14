@@ -1,40 +1,38 @@
-
-function throttle(fn, delay) {
-  let lastTime = 0;
-
-  return function (...args) {
-    const now = Date.now();
-
-    if (now - lastTime >= delay) {
-      lastTime = now;
-      fn(...args);
+function throttle(func, timer) {
+  let flage = true;
+  return (...args) => {
+    if (flage) {
+      func(...args);
+      flage = false;
     }
+    setTimeout(() => {
+      flage = true;
+    }, timer);
   };
 }
 
-function opThrottle(fn, delay,{trailing=false , leading=false}) {
-  let lastTime = 0;
-  let isCalled=false
+function opThrottle(func, timer, {leading=false,trailing=false}) {
+  let timeout;
+  return (...args) => {
 
-  return function (...args) {
-    const now = Date.now();
-
-   if(!isCalled && leading){
-      let isCalled=true
-      fn(...args)
-   }
-
-    if (now - lastTime >= delay) {
-      lastTime = now;
-      fn(...args);
-    } else if (trailing){
-      fn(...args);
+    if (!trailing && !leading) {
+      return;
     }
 
+    if (!timeout) {
+
+      if (leading) {
+        func(...args);
+      }
+      timeout = setTimeout(() => {
+        timeout = false;
+        if (!leading) {
+          func(...args);
+        }
+      }, timer);
+    }
   };
 }
-
-
 // const add = (arr, el) =>  arr?.push(el)
 
 // const run = (callback, callLimit, nbr) =>
