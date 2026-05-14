@@ -13,32 +13,33 @@ function throttle(func, wait) {
   };
 }
 
-function opThrottle(func, wait, { leading = false, trailing = false } = {}) {
-  let timeout = null;
-  let lastArgs = null;
 
+
+function opThrottle(func, timer, option = {trailing:false,leading:false}) {
+  let timeout;
+  let trailing=option.trailing;
+  let leading=option.leading;
   return (...args) => {
-    lastArgs = args;
 
-    const callNow = leading && !timeout;
-
-    if (callNow) {
-      func(...args);
+    if (!trailing && !leading) {
+      return;
     }
 
     if (!timeout) {
+
+      if (leading) {
+        func(...args);
+      }
       timeout = setTimeout(() => {
-        timeout = null;
-
-        if (trailing && (!leading || lastArgs)) {
-          func(...lastArgs);
+        timeout = false;
+        if (!leading) {
+          func(...args);
         }
-
-        lastArgs = null;
-      }, wait);
+      }, timer);
     }
   };
 }
+
 // const add = (arr, el) =>  arr?.push(el)
 
 // const run = (callback, callLimit, nbr) =>
