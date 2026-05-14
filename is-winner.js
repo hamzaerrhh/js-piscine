@@ -1,3 +1,30 @@
+const isWinner = (countryName) => {
+
+  return db.getWinner(countryName)
+    .then((country) => {
+      if (country.continent !== 'Europe') {
+        return `${country.name} is not what we are looking for because of the continent`;
+      }
+
+      return db.getResults(country.id)
+        .then((results) => {
+          if (results.length < 3) {
+            return `${country.name} is not what we are looking for because of the number of times it was champion`;
+          }
+
+          // rule 4: format years and scores
+          const years = results.map(r => r.year).join(', ');
+          const scores = results.map(r => r.score).join(', ');
+
+          return `${country.name} won the FIFA World Cup in ${years} winning by ${scores}`;
+        });
+    })
+    .catch(() => {
+      // rule 1: never won / not found
+      return `${countryName} never was a winner`;
+    });
+};
+
 const db = (() => {
   //countries that won the FIFA World Cup
   const countries = [
@@ -53,79 +80,3 @@ const db = (() => {
     addResults: (result) => results.push(result),
   }
 })()
-// /*/ // ⚡
-
-export const tests = []
-const t = (f) => tests.push(f)
-
-t(async ({ eq }) =>
-  // testing correct continent but wrong number of times
-  eq(
-    await isWinner('England'),
-    'England is not what we are looking for because of the number of times it was champion'
-  )
-)
-
-t(async ({ eq }) =>
-  // testing non winner country
-  eq(await isWinner('Colombia'), 'Colombia never was a winner')
-)
-
-t(async ({ eq }) =>
-  // testing wrong continent country
-  eq(
-    await isWinner('Uruguay'),
-    'Uruguay is not what we are looking for because of the continent'
-  )
-)
-
-t(async ({ eq }) =>
-  // testing no country
-  eq(await isWinner(''), ' never was a winner')
-)
-
-t(async ({ eq }) =>
-  // testing correct number of times but wrong continent
-  eq(
-    await isWinner('Brazil'),
-    'Brazil is not what we are looking for because of the continent'
-  )
-)
-
-t(async ({ eq }) =>
-  // testing correct number of times and correct continent
-  eq(
-    await isWinner('Germany'),
-    'Germany won the FIFA World Cup in 1954, 1974, 1990, 2014 winning by 3-2, 2-1, 1-0, 1-0'
-  )
-)
-
-t(async ({ eq }) =>
-  // testing France
-  eq(
-    await isWinner('France'),
-    'France is not what we are looking for because of the number of times it was champion'
-  )
-)
-
-t(async ({ eq, ctx }) =>
-  // testing correct number of times and correct continent, for the fake country
-  eq(
-    await isWinner(ctx.name),
-    `${ctx.name} won the FIFA World Cup in 2022, 2026, 2030 winning by 1-0, 3-1, 2-1`
-  )
-)
-
-Object.freeze(tests)
-
-export const setup = () => {
-  const seed = Math.random()
-  const name = seed.toString(36).slice(2)
-
-  db.addCountry({ id: 9, name, continent: 'Europe' })
-  db.addResults({ countryId: 9, year: 2022, score: '1-0' })
-  db.addResults({ countryId: 9, year: 2026, score: '3-1' })
-  db.addResults({ countryId: 9, year: 2030, score: '2-1' })
-
-  return { name }
-}
