@@ -1,5 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
-const { Buffer } = require('node:buffer');
+import  { Buffer }  from  'node:buffer'
 const file = process.argv[2];
 const action = process.argv[3];
 const outputName = process.argv[4];
@@ -19,6 +19,7 @@ try {
   }
 
   else if (action === 'decode') {
+
     const decoded = Buffer.from(
       content.toString(),
       'base64'
