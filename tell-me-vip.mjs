@@ -18,7 +18,6 @@ for (let f of files){
 
 }
 
-
   const guests = vips
     .map(file => file.replace(".json",""))
     .map(name => {
@@ -29,7 +28,7 @@ for (let f of files){
 
 let contentFiles=""
   guests.forEach((guest, index) => {
-    contentFiles+=`${index+1} .${guest}\n`
+    contentFiles+=`${index+1}. ${guest}\n`
 
   });
 
