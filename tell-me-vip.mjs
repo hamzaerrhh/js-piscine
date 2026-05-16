@@ -25,7 +25,7 @@ for (let f of files){
       const [firstname, lastname] = name.split('_');
       return `${lastname} ${firstname}`;
     })
-    // .sort();
+    .sort();
 
 let contentFiles=""
   guests.forEach((guest, index) => {
