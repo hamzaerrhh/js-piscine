@@ -17,19 +17,25 @@ const some = (arr, count = 0) => {
         let solved = 0;
         let results = [];
 
-        for (let i = 0; i < arr.length; i++) {
-            Promise.resolve(arr[i])
-                .then((value) => {
-                    results.push(value);
+        arr.forEach((elem, index) => {
+            Promise.resolve(elem)
+                .then((val) => {
                     solved++;
 
+                    results.push({
+                        value: val,
+                        index: index
+                    });
+
                     if (solved === count) {
-                        resolve(results);
+                        resolve(
+                            results
+                                .sort((a, b) => a.index - b.index)
+                                .map(e => e.value)
+                        );
                     }
                 })
                 .catch(reject);
-        }
-        return []
+        });
     });
 };
-
