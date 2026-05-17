@@ -8,6 +8,8 @@ const race=(arr)=>{
           .catch(reject)
    }})
 }
+
+
 const some = (arr, count = 0) => {
     if (arr.length === 0 || count === 0) {
         return []

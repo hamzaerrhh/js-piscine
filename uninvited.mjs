@@ -1,6 +1,6 @@
 
 import http from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 const PORT = 5000;
@@ -24,26 +24,25 @@ const server = http.createServer(
 
     try {
   
-        //read body 
         let body = '';
 
+        let data
 req.on('data', chunk => {
   body += chunk;
 });
-req.on('end', () => {
-  const data = JSON.parse(body);
 
-  console.log(data);
-        return send(res, 201, data);
+req.on('end',async () => {
+   data = JSON.parse(body);
+console.log(data,"will be add to",guestName)
+
+  await writeFile(`${guestName}.json`, JSON.stringify(data));
+
+    return send(res, 201, data);
 
 });
 
 
 
-      const data = req.body()
-      console.log(data)
-
-      return send(res, 201, data);
 
     } catch (err) {
       if (err.code === 'ENOENT') {
