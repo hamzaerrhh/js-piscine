@@ -24,6 +24,7 @@ if (files.length === 0) {
 const drinkCounts = {
   'iced-tea': 0,
   beer:0,
+    wine: 0,
   water: 0,
   'sparkling-water': 0,
   soft: 0,
@@ -87,7 +88,9 @@ if (drinkCounts['sparkling-water'] > 0) {
   shoppingList['sparkling-water-bottles'] =
     Math.ceil(drinkCounts['sparkling-water'] / 4)
 }
-
+if (drinkCounts.wine > 0) {
+  shoppingList['wine-bottles'] = Math.ceil(drinkCounts.wine / 4)
+}
 if (drinkCounts.soft > 0) {
   shoppingList['soft-bottles'] =
     Math.ceil(drinkCounts.soft / 4)
