@@ -23,6 +23,7 @@ if (files.length === 0) {
 
 const drinkCounts = {
   'iced-tea': 0,
+  beer:0,
   water: 0,
   'sparkling-water': 0,
   soft: 0,
