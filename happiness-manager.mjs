@@ -78,6 +78,10 @@ if (drinkCounts.water > 0) {
     Math.ceil(drinkCounts.water / 4)
 }
 
+if (drinkCounts.beer > 0) {
+  shoppingList['6-packs-beers'] = Math.ceil(drinkCounts.beer / 6)
+}
+
 if (drinkCounts['sparkling-water'] > 0) {
   shoppingList['sparkling-water-bottles'] =
     Math.ceil(drinkCounts['sparkling-water'] / 4)
